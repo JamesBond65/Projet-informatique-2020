@@ -1,6 +1,6 @@
 def menu():
   print("Bienvenue,\n 1.Saisir équipement,\n 2.Mettre à jour ou supprimer,\n 3.Voir la liste des équipements,\n 4.Quitter application")
-  Choix = int(input())
+  Choix = int(input("Entrer votre choix :"))
 
   if Choix == "1":
     print("Quel équipement souaitez-vous saisir ?,\n Voici la liste des équipements:") # ici faut mettre le fichier texte avec tout les composants
@@ -15,3 +15,6 @@ def menu():
     print("Voici la liste des équipements:") # ici faut mettre le fichier texte avec tout les composants
   if Choix == "4":
     print("A plus tard !")
+    time.sleep(5)
+    print("Le programme se ferme dans 5 secondes")
+    
