@@ -18,3 +18,4 @@ def menu():
     time.sleep(5)
     print("Le programme se ferme dans 5 secondes")
     
+#J'ai tout mis sur original
