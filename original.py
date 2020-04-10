@@ -1,5 +1,6 @@
 import time  #Cette librairie c'est pour la fin du programme
 
+
   
 
 def ajouterEquippement():
@@ -52,22 +53,48 @@ def menu():
   
     if choix == 2:
         print("1.Mettre à jour?,\n 2.Supprimer?") # je donne a l'utilisateur la posibilité de choissir entre mettre a jour ou supprimer dans un autre sous menu
-        second_choix = int(input("Entrer votre choix :"))
+        second_choix = int(input("Entrer votre choix (1 ou 2):"))
+        
     
         if second_choix == 1 :
-            print("Quel équipement souhaitez-vous mettre à jour ?,\n Voici la liste des équipements:") # ici faut mettre le fichier texte avec tout les composants
-    
+            print("Quel équipement souhaitez-vous mettre à jour ?,\n Voici la liste des équipements:\n") # ici faut mettre le fichier texte avec tout les composants
+
+            with open("data.txt", "r" ) as file :     
+                for line in file:   
+                
+                    file= file.readline()
+                    chaine= file.split("#")
+                    for valeur in chaine:
+                        print(valeur, end="")
+                
+
+
+
         if second_choix == 2 :
             print("Quel équipements souhaitez-vous supprimer ?,\n Voici la liste des équipements:") # ici faut mettre le fichier texte avec tout les composants
   
     if choix == 3:
-        print("Voici la liste des équipements:") # ici faut mettre le fichier texte avec tout les composants
-  
+        print("Voici la liste des équipements:\n") # ici faut mettre le fichier texte avec tout les composants
+        with open("data.txt", "r" ) as file : 
+            numérotation=1
+            for ligne in file:   
+                chaine= ligne.split("#")
+                print(numérotation, ")  ", end="")
+                numérotation=numérotation+1
+                
+                for valeur in chaine:
+                    
+                    print(valeur, sep=" ", end="")
+                    
+        exit(0)
+        input("\nAppuyez sur entrer pour continuer\n")
+        menu()
+
     if choix == 4:
         print("A plus tard !")
-        time.sleep(5)
-        print("Le programme se ferme dans 5 secondes")
-        exit()
+        print("Le programme se ferme dans  secondes")
+        time.sleep(0.5)
+        exit(0)
     
     
     else:
@@ -75,6 +102,8 @@ def menu():
         menu()
 
 
-menu()
-file= open('data.txt', 'r')
-print(file.read())
+
+while 1:
+    menu()
+
+
