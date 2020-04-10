@@ -48,7 +48,7 @@ def menu():
     choix = int(input("Entrer votre choix :"))
 
     if choix == 1:
-        print("Vous avez choisi : Saisir un equipement.")
+        print("Vous avez choisi : Ajouter un equipement.")
         ajouterEquippement()
   
     if choix == 2:
@@ -82,11 +82,12 @@ def menu():
                 print(numérotation, ")  ", end="")
                 numérotation=numérotation+1
                 
-                for valeur in chaine:
+                for valeur in range(len(chaine)):
+                    print(valeur ,end=" ")
+                
+                print("")
                     
-                    print(valeur, sep=" ", end="")
-                    
-        exit(0)
+        
         input("\nAppuyez sur entrer pour continuer\n")
         menu()
 
