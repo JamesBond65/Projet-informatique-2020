@@ -1,7 +1,4 @@
-import time  #Cette librairie c'est pour la fin du programme
 
-
-  
 
 def ajouterEquippement():
     
@@ -26,20 +23,69 @@ def ajouterEquippement():
     nomDuLogiciel=input("Indiquez le nom du system d'exploitation :")
     editeur=input("Entrer l'editeur du system d'exloitation :")
     version=input("Entrer la version du system d'exploitation :")
-    dateExpiration=input("Entrer la date d'expiration de la liscence du system d'exploitation :")
+    dateExpiration=input("Entrer la date d'expiration de la liscence du system d'exploitation :")       #J'ajoute tt les éléments
 
     
     
-    sauvegarde= (input("Voules vous sauvegarder les données saisies ? tapez 'o' ou 'n' "))
+    sauvegarde= (input("Voules vous sauvegarder les données saisies ? tapez 'o' ou 'n' "))  
 
     
     
     if sauvegarde == "o":
         file= open('data.txt', 'a')
         file.write(processeur+ "#" +ram+ "#" +bus+ "#" +carteGraphique+ "#" +portVideo+ "#" +resolutionEcran+ "#" +tailleEcran+ "#" +nombreDePortsUSB+ "#" +tailleDisqueSSD+ "#" +graveurCD+ "#" +carteReseau+ "#" +wifi+ "#" +bluetooth+ "#" +fabricant+ "#" +fournisseur+ "#" +dateAchat+ "#" +localisation+ "#" +utilisateur+ "#" +nomDuLogiciel+ "#" +editeur+ "#" +version+ "#" +dateExpiration+ "\n")
-        file.close()
+        file.close()    #J'enregistre ci dessus les nouveaux parametres dans le fichier
 
 
+def mettre_a_jour():
+    
+    with open("data.txt", "r" ) as file : 
+        numérotation=1
+        
+        for ligne in file:   
+            chaine= ligne.split("#")
+            print(numérotation, ")  ", end="")
+            numérotation=numérotation+1
+                
+            for valeur in range(len(chaine)):
+                print(valeur ,end=" ")            #Tout ca permet d'ouvrir le fichier et d'afficher ce qu'y a dedans
+                
+            print("")
+
+    mise_a_jour= int(input("\nQuelle ligne souhaitez vous mettre à jour ?"))        
+    print("Vous avez choisi la ligne numéro :", mise_a_jour)
+    
+    chaine_recherchée=0
+    
+    with open("data.txt", "r" ) as file :
+        for i in range(mise_a_jour) :
+            
+            chaine_recherchée= file.readline()
+   
+    print("\nVoici l'equippement selectionne:", end="")
+    for valeurs in range(len(chaine_recherchée)):
+                print(valeurs ,end=" ")        #La y'a un problrme mais j'ai pas encore trouvé
+    
+    
+    exit(0)
+
+def supprimer_equipement():
+
+    with open("data.txt", "r" ) as file : 
+        numérotation=1
+
+        for ligne in file:   
+            chaine= ligne.split("#")
+            print(numérotation, ")  ", end="")
+            numérotation=numérotation+1
+                
+            for valeur in range(len(chaine)):
+                print(valeur ,end=" ")
+                
+            print("")
+
+    ligne_supression=int(input("Sur quelle ligne se situe l'équippement que vous voulez supprimer ?"))
+    
 
 
 def menu():
@@ -49,7 +95,7 @@ def menu():
 
     if choix == 1:
         print("Vous avez choisi : Ajouter un equipement.")
-        ajouterEquippement()
+        ajouterEquippement()  #renvoie à la fonction définie ci-dessus
   
     if choix == 2:
         print("1.Mettre à jour?,\n 2.Supprimer?") # je donne a l'utilisateur la posibilité de choissir entre mettre a jour ou supprimer dans un autre sous menu
@@ -58,20 +104,13 @@ def menu():
     
         if second_choix == 1 :
             print("Quel équipement souhaitez-vous mettre à jour ?,\n Voici la liste des équipements:\n") # ici faut mettre le fichier texte avec tout les composants
-
-            with open("data.txt", "r" ) as file :     
-                for line in file:   
+            mettre_a_jour()
                 
-                    file= file.readline()
-                    chaine= file.split("#")
-                    for valeur in chaine:
-                        print(valeur, end="")
-                
-
 
 
         if second_choix == 2 :
             print("Quel équipements souhaitez-vous supprimer ?,\n Voici la liste des équipements:") # ici faut mettre le fichier texte avec tout les composants
+            supprimer_equipement()
   
     if choix == 3:
         print("Voici la liste des équipements:\n") # ici faut mettre le fichier texte avec tout les composants
@@ -94,7 +133,6 @@ def menu():
     if choix == 4:
         print("A plus tard !")
         print("Le programme se ferme dans  secondes")
-        time.sleep(0.5)
         exit(0)
     
     
