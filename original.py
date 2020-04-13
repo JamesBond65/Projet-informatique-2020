@@ -67,7 +67,7 @@ def mettre_a_jour():
                 print(valeurs ,end=" ")        #La y'a un problrme mais j'ai pas encore trouvé
     
     
-    exit(0)
+
 
 def supprimer_equipement():
 
@@ -85,7 +85,13 @@ def supprimer_equipement():
             print("")
 
     ligne_supression=int(input("Sur quelle ligne se situe l'équippement que vous voulez supprimer ?"))
-    
+    f = open ("data.txt", "r" )
+    lines = f.readlines()
+    del(lines[ligne_supression - 1])
+    f.close()
+    f= open("data.txt", "w")
+    f.writelines(lines)
+    f.close()
 
 
 def menu():
