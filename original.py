@@ -46,7 +46,7 @@ def ajouterEquippement():
         file.write(processeur+ "#" +ram+ "#" +bus+ "#" +carteGraphique+ "#" +portVideo+ "#" +resolutionEcran+ "#" +tailleEcran+ "#" +nombreDePortsUSB+ "#" +tailleDisqueSSD+ "#" +graveurCD+ "#" +carteReseau+ "#" +wifi+ "#" +bluetooth+ "#" +fabricant+ "#" +fournisseur+ "#" +dateAchat+ "#" +localisation+ "#" +utilisateur)
         file.close()    #J'enregistre ci dessus les nouveaux parametres dans le fichier
 
-    elif suvegarde == "n":
+    elif sauvegarde == "n":
         print("Vous avez choisi de ne pas enregister les données, vous allez être redirigé vers le menu principal.")
         print("Appuyez sur une touche pour continuer")
         input("")
@@ -153,6 +153,7 @@ def supprimer_equipement():
         nouvelle_chaine = ""
         for i in range(len(chaine)):
             nouvelle_chaine = nouvelle_chaine  + str(chaine[i]) + "#"
+            nouvelle_chaine = nouvelle_chaine + "\n"
         lines[mise_a_jour - 1] = nouvelle_chaine
         f.close()
         f = open("data.txt", "w")
@@ -180,7 +181,7 @@ def rechercher_par_parametre() :
             if type(type_hardware)==str:
                 print("valeur inconnue")
 
-        choix_recherche = int(input("1) Afficher tout les équipements pour le paramètre demandé.\n 2)Rechercher un équippement spécifique."))
+        choix_recherche = int(input("1) Afficher tout les équipements pour le paramètre demandé.\n 2)Rechercher un équippement spécifique. :"))
         f = open("data.txt", "r")
         lines = f.readlines()
         numerotation = 1
@@ -192,7 +193,7 @@ def rechercher_par_parametre() :
                 numerotation += 1
 
         elif choix_recherche == 2:
-            terme_recherche = str(input("quel est le terme recherche?"))
+            terme_recherche = str(input("Quel est le terme recherche?"))
             for i in range(len(lines)):
                 chaine = lines[i]
                 chaine = chaine.split("#")
