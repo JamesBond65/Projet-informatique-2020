@@ -180,7 +180,7 @@ def rechercher_par_parametre() :
             if type(type_hardware)==str:
                 print("valeur inconnue")
 
-        choix_recherche = int(input("choix_recherche"))
+        choix_recherche = int(input("1) Afficher tout les équipements pour le paramètre demandé.\n 2)Rechercher un équippement spécifique."))
         f = open("data.txt", "r")
         lines = f.readlines()
         numerotation = 1
@@ -232,9 +232,9 @@ def rechercher_par_parametre() :
                         x=int()
                         for Zeus in range(0,type_software,8):
                             x=Zeus
-                            for Athena in range(8):#
-                                #
-                                print(numerotation, ")", chaine[x])#
+                            for Athena in range(8):
+                                
+                                print(numerotation, ")", chaine[x])
                                 x += 1
                 numerotation += 1
 
@@ -248,6 +248,7 @@ def menu():
     if choix == 1:
         print("Vous avez choisi : Ajouter un equipement.")
         ajouterEquippement()  #Renvoie à la fonction Ajouter equipement.
+        menu()
   
     if choix == 2:
         print("1.Mettre à jour?,\n 2.Supprimer?") # Renvoie à la fonction mettre à jour ou supprimer un équipement.
@@ -255,7 +256,7 @@ def menu():
         
     
         if second_choix == 1 :
-            print("Quel équipement souhaitez-vous mettre à jour ?,\n ") # Renvoie à la fonction mettre à jour définie ci-dessus.
+            print("Quel équipement souhaitez-vous mettre à jour ?\n ") # Renvoie à la fonction mettre à jour définie ci-dessus.
             mettre_a_jour()
                 
 
