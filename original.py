@@ -243,7 +243,7 @@ def rechercher_par_parametre() :
 
 def menu():
  
-    print("Bienvenue dans le programme\n 1.Saisir nouvel équipement.\n 2.Mettre à jour ou supprimer un équippement.\n 3.Voir la liste des équipements.\n 4.Rechercher un équipement. \n 5.Quitter application")
+    print("Bienvenue dans le programme\n 1.Saisir nouvel équipement.\n 2.Mettre à jour ou supprimer un équipement.\n 3.Voir la liste des équipements.\n 4.Rechercher un équipement. \n 5.Quitter application")
     choix = int(input("Entrer votre choix :"))
 
     if choix == 1:
