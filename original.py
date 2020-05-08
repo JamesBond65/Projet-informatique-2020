@@ -41,13 +41,27 @@ def ajouterEquippement():
     sauvegarde= (input("Voules vous sauvegarder les données saisies ? tapez 'o' ou 'n' "))  
 
     
-    
     if sauvegarde == "o":
         file= open('data.txt', 'a')
         file.write(processeur+ "#" +ram+ "#" +bus+ "#" +carteGraphique+ "#" +portVideo+ "#" +resolutionEcran+ "#" +tailleEcran+ "#" +nombreDePortsUSB+ "#" +tailleDisqueSSD+ "#" +graveurCD+ "#" +carteReseau+ "#" +wifi+ "#" +bluetooth+ "#" +fabricant+ "#" +fournisseur+ "#" +dateAchat+ "#" +localisation+ "#" +utilisateur)
         file.close()    #J'enregistre ci dessus les nouveaux parametres dans le fichier
 
-    x = True
+    elif suvegarde == "n":
+        print("Vous avez choisi de ne pas enregister les données, vous allez être redirigé vers le menu principal.")
+        print("Appuyez sur une touche pour continuer")
+        input("")
+
+    else:
+        print("Vous avez saisie une touche non spécifiée.")
+        print("Vos données ont été sauvegardées.")
+        file= open('data.txt', 'a')
+        file.write(processeur+ "#" +ram+ "#" +bus+ "#" +carteGraphique+ "#" +portVideo+ "#" +resolutionEcran+ "#" +tailleEcran+ "#" +nombreDePortsUSB+ "#" +tailleDisqueSSD+ "#" +graveurCD+ "#" +carteReseau+ "#" +wifi+ "#" +bluetooth+ "#" +fabricant+ "#" +fournisseur+ "#" +dateAchat+ "#" +localisation+ "#" +utilisateur)
+        file.close()    #J'enregistre ci dessus les nouveaux parametres dans le fichier
+        print("Appuyez sur une touche pour continuer.")
+        input("")
+        
+
+    x=True
     compteur = 0
     index = 18
     while x==True :
@@ -57,6 +71,7 @@ def ajouterEquippement():
             file.write("\n")
             file.close()
             x = False # le break enleve le while du menu donc fallait le faire a la mano
+        
         else:
             compteur += 1
             index +=1
@@ -71,6 +86,9 @@ def ajouterEquippement():
             file.write("#" +nomDuLogiciel+ "#" +editeur+ "#" +version+ "#" +dateExpiration)
             file.close()
 
+    print("\nVos paramètres on bien été enregistrés.")
+    print("Appuyez sur une touche pour continuer")
+    input("")
 
 
 def mettre_a_jour():
@@ -80,8 +98,8 @@ def mettre_a_jour():
     mise_a_jour= int(input("\nQuelle ligne souhaitez vous mettre à jour ?"))        
     print("Vous avez choisi la ligne numéro :", mise_a_jour)
 
-    terme_changer = int(input("\nQuel est le numero du terme que vous voulez mettre à jour ? (numéro entre crochets)"))
-    nouvelle_valeur = input("Indiquez la nouvelle valeur")
+    terme_changer = int(input("\nQuel est le numero du terme que vous voulez mettre à jour ? (numéro entre crochets):"))
+    nouvelle_valeur = input("Indiquez la nouvelle valeur:")
     f = open("data.txt", "r")
     lines = f.readlines()
 
@@ -103,13 +121,13 @@ def mettre_a_jour():
 
 def supprimer_equipement():
 
-    choix_supp=int(input("\nvoulez vous supprimer un ordinateur (1) ou un logiciel d'ordinateur (2) ?"))
+    choix_supp=int(input("\nVoulez vous supprimer un ordinateur (1) ou un logiciel d'ordinateur (2) ?:"))
 
     if choix_supp == 1 :
 
         afficher_equipements()
 
-        ligne_supression=int(input("\nSur quelle ligne se situe l'équippement que vous voulez supprimer ?"))
+        ligne_supression=int(input("\nSur quelle ligne se situe l'équippement que vous voulez supprimer ?:"))
         f = open ("data.txt", "r" )
         lines = f.readlines()
         del(lines[ligne_supression - 1])
@@ -144,7 +162,7 @@ def supprimer_equipement():
 
 def rechercher_par_parametre() :
 
-    type_para = int(input("voulez vous rechercher :\n 1/Hardware\n 2/Software"))
+    type_para = int(input("Voulez vous rechercher :\n 1/Hardware\n 2/Software :"))
 
     if type_para == 1 :
         hardware = {1: "processeur", 2: "ram", 3: "bus", 4: "carteGraphique", 5: "portVideo", 6: "resolutionEcran",
@@ -154,7 +172,7 @@ def rechercher_par_parametre() :
         print(hardware.values())
         type_hardware = str()
         while type(type_hardware)== str:
-            type_hardware = str(input("Quel harware souhaitez vous ?"))#je connais la caracteristique qu'il souhaite
+            type_hardware = str(input("Quel harware souhaitez vous ? Ecrivez le nom du hardware :"))    #Demande le parametre recherché.
             for abc in hardware.keys():
                 if hardware[abc] == type_hardware:
                     type_hardware = abc #je la transfforme en nombre pour l'utiliser dans une liste
@@ -219,32 +237,36 @@ def rechercher_par_parametre() :
                                 print(numerotation, ")", chaine[x])#
                                 x += 1
                 numerotation += 1
+
+
+
 def menu():
  
-    print("Bienvenue dans le programme\n 1.Saisir nouvel équipement.\n 2.Mettre à jour ou supprimer un équippement.\n 3.Voir la liste des équipements.\n 4.Quitter application")
+    print("Bienvenue dans le programme\n 1.Saisir nouvel équipement.\n 2.Mettre à jour ou supprimer un équippement.\n 3.Voir la liste des équipements.\n 4.Rechercher un équipement. \n 5.Quitter application")
     choix = int(input("Entrer votre choix :"))
 
     if choix == 1:
         print("Vous avez choisi : Ajouter un equipement.")
-        ajouterEquippement()  #renvoie à la fonction définie ci-dessus
+        ajouterEquippement()  #Renvoie à la fonction Ajouter equipement.
   
     if choix == 2:
-        print("1.Mettre à jour?,\n 2.Supprimer?") # je donne a l'utilisateur la posibilité de choissir entre mettre a jour ou supprimer dans un autre sous menu
+        print("1.Mettre à jour?,\n 2.Supprimer?") # Renvoie à la fonction mettre à jour ou supprimer un équipement.
         second_choix = int(input("Entrer votre choix (1 ou 2):"))
         
     
         if second_choix == 1 :
-            print("Quel équipement souhaitez-vous mettre à jour ?,\n ") # ici faut mettre le fichier texte avec tout les composants
+            print("Quel équipement souhaitez-vous mettre à jour ?,\n ") # Renvoie à la fonction mettre à jour définie ci-dessus.
             mettre_a_jour()
                 
 
 
         if second_choix == 2 :
-            print("Quel équipements souhaitez-vous supprimer ?,\n ") # ici faut mettre le fichier texte avec tout les composants
+            print("Quel équipements souhaitez-vous supprimer ?,\n ") # Renvoie à la fonction supprimer equipement.
             supprimer_equipement()
   
+    
     if choix == 3:
-        print("Voici la liste des équipements:\n") # ici faut mettre le fichier texte avec tout les composants
+        print("Voici la liste des équipements:\n") # Affiche la liste des équipement déja saisis.
         with open("data.txt", "r" ) as file : 
             numérotation =1
             for ligne in file:   
@@ -258,16 +280,18 @@ def menu():
                 print("")
                     
         
-        input("\nAppuyez sur entrer pour continuer\n")
+        input("\nAppuyez sur une touche pour continuer.\n")
         menu()
 
     if choix == 4:
-        print("A plus tard !")
-        print("Le programme se ferme dans  secondes")
-        exit(0)
+        rechercher_par_parametre()
+        menu()
 
     if choix == 5:
-        rechercher_par_parametre()
+        print("A plus tard !")
+        exit(0)
+
+    
     
     else:
         print("Le paramètre entré n'est pas un entier de la liste, recommencez s'il vous plait.\n")
