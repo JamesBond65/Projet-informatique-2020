@@ -21,44 +21,24 @@ def ajouterEquippement():
     )
     ram = " [2]ram : #" + input("Entrer la taille de la RAM :")
     bus = " [3]bus : #" + input("Enter le type de bus (PCI, SATA...) :")
-    carteGraphique = " [4] carteGraphique : #" + input(
-        "Enter le modele de la carte graphique :"
-    )
-    portVideo = " [5] portVideo : #" + input(
-        "Entrer les ports présents sur l'appareil (VGA, HDMI, Thunderbolt,...):"
-    )
-    resolutionEcran = "[6] resolutionEcran : #" + input(
-        "Entrer la résoution de l'écran :"
-    )
+    carteGraphique = " [4] carteGraphique : #" + input("Enter le modele de la carte graphique :")
+    portVideo = " [5] portVideo : #" + input("Entrer les ports présents sur l'appareil (VGA, HDMI, Thunderbolt,...):")
+    resolutionEcran = "[6] resolutionEcran : #" + input("Entrer la résoution de l'écran :")
     tailleEcran = " [7] tailleEcran : #" + input("Entrer la taille de l'ecran :")
-    nombreDePortsUSB = " [8] nombreDePortsUSB : #" + input(
-        "Entrer le nombre de ports USB :"
-    )
-    tailleDisqueSSD = " [9] tailleDisqueSSD : #" + input(
-        "Indique la capacité du disque du ou du SSD"
-    )
-    graveurCD = " [10] graveurCD : #" + input(
-        "INdiquez si l'appareil possede un graveur/lecteur CD"
-    )
-    carteReseau = " [11] carteReseau : #" + input(
-        "Indiquez le constructeur et le débit de la carte reseau :"
-    )
+    nombreDePortsUSB = " [8] nombreDePortsUSB : #" + input("Entrer le nombre de ports USB :")
+    tailleDisqueSSD = " [9] tailleDisqueSSD : #" + input("Indique la capacité du disque du ou du SSD")
+    graveurCD = " [10] graveurCD : #" + input("Indiquez si l'appareil possede un graveur/lecteur CD")
+    carteReseau = " [11] carteReseau : #" + input("Indiquez le constructeur et le débit de la carte reseau :")
     wifi = " [12] wifi : #" + input("Entrer le type et la bande frequence du wifi :")
     bluetooth = " [13] bluetooth : #" + input("Indiquez le type de bleutooth :")
     fabricant = " [14] fabricant : #" + input("Entrer le fabriquant du PC :")
     fournisseur = " [15] fournisseur : #" + input("Entrer le fournisseur du PC :")
     dateAchat = " [16] dateAchat : #" + input("Entrer la date de l'achat:")
-    localisation = " [17] localisation : #" + input(
-        "Entrer la localisation de l'appereil dans l'établissement :"
-    )
-    utilisateur = " [18] utilisateur : #" + input(
-        "Entrer les utilisateurs ou le nombre d'utilisateur pouvant acceder au PC :"
-    )
+    localisation = " [17] localisation : #" + input("Entrer la localisation de l'appereil dans l'établissement :")
+    utilisateur = " [18] utilisateur : #" + input("Entrer les utilisateurs ou le nombre d'utilisateur pouvant acceder au PC :")
     # J'ajoute tt les éléments
 
-    sauvegarde = input(
-        "Voules vous sauvegarder les données saisies ? tapez 'o' ou 'n' "
-    )
+    sauvegarde = input("Voules vous sauvegarder les données saisies ? tapez 'o' ou 'n' ")
 
     if sauvegarde == "o":
         file = open("data.txt", "a")
@@ -102,11 +82,9 @@ def ajouterEquippement():
         file.close()  # J'enregistre ci dessus les nouveaux parametres dans le fichier
 
     elif sauvegarde == "n":
-        print(
-            "Vous avez choisi de ne pas enregister les données, vous allez être redirigé vers le menu principal."
-        )
-        print("Appuyez sur une touche pour continuer")
-        input("")
+        print("Vous avez choisi de ne pas enregister les données, vous allez être redirigé vers le menu principal.")
+        input("Appuyez sur une touche pour continuer")
+        menu()
 
     else:
         print("Vous avez saisie une touche non spécifiée.")
@@ -167,21 +145,13 @@ def ajouterEquippement():
         else:
             compteur += 1
             index += 1
-            nomDuLogiciel = (" [%d] nom du system du logiciel  : #" % index) + input(
-                "Indiquez le nom du logiciel :"
-            )
+            nomDuLogiciel = (" [%d] nom du system du logiciel  : #" % index) + input("Indiquez le nom du logiciel :")
             index += 1
-            editeur = (" [%d] éditeur du logiciel : #" % index) + input(
-                "Entrer l'editeur du logiciel :"
-            )
+            editeur = (" [%d] éditeur du logiciel : #" % index) + input("Entrer l'editeur du logiciel :")
             index += 1
-            version = (" [%d] éditeur du logiciel : #" % index) + input(
-                "Entrer la version du logiciel :"
-            )
+            version = (" [%d] éditeur du logiciel : #" % index) + input("Entrer la version du logiciel :")
             index += 1
-            dateExpiration = (
-                " [%d] date d'expiration du logiciel  : #" % index
-            ) + input("Entrer la date d'expiration de la liscence du logiciel :")
+            dateExpiration = (" [%d] date d'expiration du logiciel  : #" % index) + input("Entrer la date d'expiration de la liscence du logiciel :")
             file = open("data.txt", "a")
             file.write(
                 "#"
@@ -207,12 +177,8 @@ def mettre_a_jour():
     mise_a_jour = int(input("\nQuelle ligne souhaitez vous mettre à jour ?"))
     print("Vous avez choisi la ligne numéro :", mise_a_jour)
 
-    terme_changer = int(
-        input(
-            "\nQuel est le numero du terme que vous voulez mettre à jour ? (numéro entre crochets):"
-        )
-    )
-    nouvelle_valeur = input("Indiquez la nouvelle valeur:")
+    terme_changer = int(input("\nQuel est le numero du terme que vous voulez mettre à jour ? (numéro entre crochets) :"))
+    nouvelle_valeur = input("Indiquez la nouvelle valeur :")
     f = open("data.txt", "r")
     lines = f.readlines()
 
@@ -228,47 +194,47 @@ def mettre_a_jour():
     f.close()
     f = open("data.txt", "w")
     f.writelines(lines)
-    print("valeur changée")
+    print("\nValeur changée !")
     f.close()
+    input("Appuyez sur une touche pour continuer.")
+    menu()
 
 
 def supprimer_equipement():
 
-    choix_supp = int(
-        input(
-            "\nVoulez vous supprimer un ordinateur (1) ou un logiciel d'ordinateur (2) ?:"
-        )
-    )
+    choix_supp = int(input("\nVoulez vous supprimer un ordinateur (1) ou un logiciel d'ordinateur (2) ?:"))
 
     if choix_supp == 1:
 
         afficher_equipements()
-
-        ligne_supression = int(
-            input(
-                "\nSur quelle ligne se situe l'équippement que vous voulez supprimer ?:"
-            )
-        )
-        f = open("data.txt", "r")
-        lines = f.readlines()
-        del lines[ligne_supression - 1]
-        f.close()
-        f = open("data.txt", "w")
-        f.writelines(lines)
-        f.close()
+        try:
+            ligne_supression = int(input("\nSur quelle ligne se situe l'équippement que vous voulez supprimer ? :"))
+            f = open("data.txt", "r")
+            lines = f.readlines()
+            del lines[ligne_supression-1]
+            f.close()
+            f = open("data.txt", "w")
+            f.writelines(lines)
+            f.close()
+            print("\nL'ordinateur séléctioné à bien été supprimé.")
+            input("Appuyez sur une touche pour continuer.")
+            menu()
+        
+        except IndexError as e:
+            print("\nLa ligne que vous avez choisi n'existe pas, veuillez recommencer.")
+            input("Appuyez sur une touche pour continuer.")
+            supprimer_equipement()
 
     elif choix_supp == 2:
 
         afficher_equipements()
 
-        mise_a_jour = int(input("\nQuelle ligne souhaitez vous mettre à jour ?"))
+        mise_a_jour = int(input("\nQuelle ligne souhaitez vous mettre à jour ? :"))
         print("Vous avez choisi la ligne numéro :", mise_a_jour)
 
         logiciel_supp = 2 * (
             int(
-                input(
-                    "\nQuel est le numéro du terme que vous voulez mettre à jour ? (numéro entre crochets)"
-                )
+                input("\nQuel est le numéro du terme que vous voulez mettre à jour ? (numéro entre crochets)")
             )
         )
         f = open("data.txt", "r")
@@ -287,6 +253,9 @@ def supprimer_equipement():
         f.writelines(lines)
         print("valeur changée")
         f.close()
+        print("Le logiciel séléctioné à bien été supprimé.")
+        input("Appuyez sur une touche pour continuer.")
+        menu()
 
 
 def rechercher_par_parametre():
@@ -317,9 +286,7 @@ def rechercher_par_parametre():
         print(hardware.values())
         type_hardware = str()
         while type(type_hardware) == str:
-            type_hardware = str(
-                input("Quel harware souhaitez vous ? Ecrivez le nom du hardware :")
-            )  # Demande le parametre recherché.
+            type_hardware = str(input("Quel harware souhaitez vous ? Ecrivez le nom du hardware :"))  # Demande le parametre recherché.
             for abc in hardware.keys():
                 if hardware[abc] == type_hardware:
                     type_hardware = abc  # je la transfforme en nombre pour l'utiliser dans une liste
@@ -403,9 +370,9 @@ def rechercher_par_parametre():
 def menu():
 
     print(
-        "Bienvenue dans le programme\n 1.Saisir nouvel équipement.\n 2.Mettre à jour ou supprimer un équipement.\n 3.Voir la liste des équipements.\n 4.Rechercher un équipement. \n 5.Quitter application"
+        "Bienvenue dans le programme\n\n 1.Saisir nouvel équipement.\n 2.Mettre à jour ou supprimer un équipement.\n 3.Voir la liste des équipements.\n 4.Rechercher un équipement. \n 5.Quitter l'application."
     )
-    choix = int(input("Entrer votre choix :"))
+    choix = int(input("\nEntrer votre choix :"))
 
     if choix == 1:
         print("Vous avez choisi : Ajouter un equipement.")
@@ -414,7 +381,7 @@ def menu():
 
     if choix == 2:
         print(
-            "1.Mettre à jour?,\n 2.Supprimer?"
+            "\nVoulez vous :\n1.Mettre à jour un équipement.\n2.Supprimer un équipement."
         )  # Renvoie à la fonction mettre à jour ou supprimer un équipement.
         second_choix = int(input("Entrer votre choix (1 ou 2):"))
 
