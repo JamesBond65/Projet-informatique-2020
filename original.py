@@ -138,7 +138,7 @@ def ajouterEquippement():
         logiciel_supl = input("Voulez vous rajouter des logiciels ? tapez 'o' ou 'n' ")
         if logiciel_supl == "n":
             file = open("data.txt", "a")
-            file.write("\n")
+            file.write("#\n")
             file.close()
             x = False  # le break enleve le while du menu donc fallait le faire a la mano
 
@@ -185,11 +185,12 @@ def mettre_a_jour():
     chaine = lines[mise_a_jour - 1]
 
     chaine = chaine.split("#")
-
+    del (chaine[len(chaine)-1])
     chaine[(terme_changer * 2) - 1] = nouvelle_valeur
     nouvelle_chaine = ""
     for i in range(len(chaine)):
         nouvelle_chaine = nouvelle_chaine + str(chaine[i]) + "#"
+    nouvelle_chaine = nouvelle_chaine + "\n"
     lines[mise_a_jour - 1] = nouvelle_chaine
     f.close()
     f = open("data.txt", "w")
