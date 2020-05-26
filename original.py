@@ -172,32 +172,38 @@ def ajouterEquippement():
 
 def mettre_a_jour():
 
-    afficher_equipements()
+    try:
+        afficher_equipements()
 
-    mise_a_jour = int(input("\nQuelle ligne souhaitez vous mettre à jour ?"))
-    print("Vous avez choisi la ligne numéro :", mise_a_jour)
+        mise_a_jour = int(input("\nQuelle ligne souhaitez vous mettre à jour ?"))
+        print("Vous avez choisi la ligne numéro :", mise_a_jour)
 
-    terme_changer = int(input("\nQuel est le numero du terme que vous voulez mettre à jour ? (numéro entre crochets) :"))
-    nouvelle_valeur = input("Indiquez la nouvelle valeur :")
-    f = open("data.txt", "r")
-    lines = f.readlines()
+        terme_changer = int(input("\nQuel est le numero du terme que vous voulez mettre à jour ? (numéro entre crochets) :"))
+        nouvelle_valeur = input("Indiquez la nouvelle valeur :")
+        f = open("data.txt", "r")
+        lines = f.readlines()
 
-    chaine = lines[mise_a_jour - 1]
+        chaine = lines[mise_a_jour - 1]
 
-    chaine = chaine.split("#")
+        chaine = chaine.split("#")
 
-    chaine[(terme_changer * 2) - 1] = nouvelle_valeur
-    nouvelle_chaine = ""
-    for i in range(len(chaine)):
-        nouvelle_chaine = nouvelle_chaine + str(chaine[i]) + "#"
-    lines[mise_a_jour - 1] = nouvelle_chaine
-    f.close()
-    f = open("data.txt", "w")
-    f.writelines(lines)
-    print("\nValeur changée !")
-    f.close()
-    input("Appuyez sur une touche pour continuer.")
-    menu()
+        chaine[(terme_changer * 2) - 1] = nouvelle_valeur
+        nouvelle_chaine = ""
+        for i in range(len(chaine)):
+            nouvelle_chaine =  nouvelle_chaine + str(chaine[i]) + "#"
+        lines[mise_a_jour - 1] = nouvelle_chaine
+        f.close()
+        f = open("data.txt", "w")
+        f.writelines(lines)
+        print("\nValeur changée !")
+        f.close()
+        input("Appuyez sur une touche pour continuer.")
+        menu()
+
+    except IndexError as b :
+        print("\nLa ligne que vous avez choisi n'existe pas, veuillez recommencer.")
+        input("Appuyer sur une touche pour continuer")
+        mettre_a_jour()
 
 
 def supprimer_equipement():
